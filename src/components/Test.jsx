@@ -2,11 +2,13 @@ import React from 'react'
 import Square from './Square'
 import cross from '../assets/cross2.svg'
 import circle from '../assets/circle2.svg'
+import MovingBackground from './MovingBackground'
 
 export default function Test() {
 
   return (
-    <div className='w-full min-h-lvh flex justify-center items-center bg-[#ffd879] flex-col'>
+    
+    <MovingBackground>
       
       <p className='text-2xl'>Tic Tac Toe!</p>
       <p className='text-3xl'>This is a example text</p>
@@ -29,6 +31,6 @@ export default function Test() {
 
       
       
-    </div>
+    </MovingBackground>
   )
 }
