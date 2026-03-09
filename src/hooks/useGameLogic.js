@@ -5,6 +5,7 @@ export default function useGameLogic({socket}) {
   const [board, setBoard] = useState(Array(9).fill(null))
   const [turn, setTurn] = useState(TURNS.x)
   const [win, setWin] = useState(null)
+  const [winningLine, setWinningLine] = useState(null)
 
   useEffect(() => {
     const emitBoard = (board) => {
@@ -45,6 +46,7 @@ export default function useGameLogic({socket}) {
       const [a, b, c] = combo;
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
         setWin(board[a])
+        setWinningLine(combo)
         return
       }
     }
@@ -55,5 +57,6 @@ export default function useGameLogic({socket}) {
 
   }
 
-  return {win, board, turn, updateBoard, playAgain}
+  return {win, board, turn, updateBoard, playAgain, winningLine}
+
 }

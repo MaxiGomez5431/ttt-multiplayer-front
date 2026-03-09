@@ -1,18 +1,21 @@
-import React from 'react'
+import { useRef } from 'react'
 import PlayAgain from './PlayAgain';
 import Square from './Square';
 import useGameLogic from '../hooks/useGameLogic';
 import useConnection from '../hooks/useConnection';
 import { TURNS } from '/public/constants';
+import WinningLine from "./WinningLine";
 
 export default function Game({socket}) {
   const {players} = useConnection({socket})
-  const {win, board, turn, updateBoard, playAgain} = useGameLogic({socket, players})
+  const {win, board, turn, updateBoard, playAgain, winningLine} = useGameLogic({socket, players})
+  const boardRef = useRef(null)
+
 
   return (
     <div className='w-full min-h-lvh flex justify-center items-center bg-[#ffd879] flex-col'>
       
-      <section className="grid grid-cols-3">
+      <section ref={boardRef} className="relative grid grid-cols-3">
         {board.map((_, index) => (
           <Square 
             key={index} 
@@ -21,8 +24,16 @@ export default function Game({socket}) {
           >
             {board[index]}
           </Square>
-          
+
         ))}
+
+        {winningLine && 
+          <WinningLine 
+            boardRef={boardRef}
+            combination={winningLine} 
+          />
+        }
+
       </section>
 
       <section className='flex m-2'>

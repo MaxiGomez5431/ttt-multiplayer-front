@@ -1,10 +1,12 @@
-import React from 'react'
+import { useRef } from 'react'
 import Square from './Square'
 import cross from '../assets/cross2.svg'
 import circle from '../assets/circle2.svg'
 import MovingBackground from './MovingBackground'
+import WinningLine from "./WinningLine";
 
 export default function Test() {
+  const boardRef = useRef(null)
 
   return (
     
@@ -13,7 +15,7 @@ export default function Test() {
       <p className='text-2xl'>Tic Tac Toe!</p>
       <p className='text-3xl'>This is a example text</p>
 
-      <section className="grid grid-cols-3">
+      <section ref={boardRef} className="grid grid-cols-3">
         {Array(9).fill(null).map((_, index) => (
           <Square 
             key={index} 
@@ -29,8 +31,6 @@ export default function Test() {
         <Square >{circle}</Square>
       </section>
 
-      
-      
     </MovingBackground>
   )
 }

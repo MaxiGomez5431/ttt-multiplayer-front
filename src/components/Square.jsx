@@ -6,6 +6,7 @@ export default function Square ({index, children, handleClick, isSelected}) {
 
   return (
     <div 
+      data-square
       onClick={() => handleClick(index)}
       className={`bg-white text-2xl text-black rounded-xl
         shadow-[3px_2px_0px_#000] border-3  active:shadow-[0px_0px_0px_#000]

@@ -1,0 +1,15 @@
+.draw-line {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: drawLine 0.6s ease forwards;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+line {
+  filter: drop-shadow(0 0 6px red);
+}
